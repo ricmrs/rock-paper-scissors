@@ -10,7 +10,7 @@ const iconSizes = {
 interface IconProps {
   name: keyof typeof icons;
   styleSheet?: StyleSheet;
-  viewBox?: number;
+  viewBox?: string;
 }
 export default function Icon({ name, styleSheet, viewBox, ...props }: IconProps) {
   const CurrentIcon = icons[name];
@@ -25,7 +25,7 @@ export default function Icon({ name, styleSheet, viewBox, ...props }: IconProps)
       }}
       color="inherit"
       fill="currentColor"
-      viewBox={`0 0 ${viewBox} ${viewBox}`}
+      viewBox={viewBox}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
@@ -36,5 +36,5 @@ export default function Icon({ name, styleSheet, viewBox, ...props }: IconProps)
 
 Icon.defaultProps = {
   name: 'default_icon',
-  viewBox: 48
+  viewBox: '0 0 55 55'
 }

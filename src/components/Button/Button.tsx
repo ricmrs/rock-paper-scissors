@@ -17,12 +17,12 @@ export default function Button({
   // colorVariant,
   // variant,
   size,
+  ...props
 }: ButtonProps) {
   const theme = useTheme();
   return (
     <ButtonBase
       styleSheet={{
-        alignSelf: 'flex-start',
         alignItems: 'center',
         justifyContent: 'center',
         // [Color + Variant]
@@ -35,6 +35,7 @@ export default function Button({
         }),
         ...styleSheet,
       }}
+      {...props}
     >
       {children}
     </ButtonBase>

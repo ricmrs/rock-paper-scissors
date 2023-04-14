@@ -1,14 +1,10 @@
 import Box from "@/components/Box/Box";
+import Image from "@/components/Image/Image";
 import Text from "@/components/Text/Text";
 import { useTheme } from "@/theme/ThemeProvider";
 
 export default function ScoreBoard(){
   const theme = useTheme()
-
-  const textStyles = {
-    textTransform: 'uppercase',
-    color: '#FFF',
-  }
 
   return (
     <Box 
@@ -24,9 +20,7 @@ export default function ScoreBoard(){
           alignItems: 'center'
         }}>
         <Box>
-          <Text styleSheet={{...textStyles}} variant="heading2">Rock</Text>
-          <Text styleSheet={{...textStyles}} variant="heading2">Paper</Text>
-          <Text styleSheet={{...textStyles}} variant="heading2">Scissors</Text>
+          <Image src="/images/logo.svg" alt="Logo" styleSheet={{ height: '50px' }}/>
         </Box>
         <Box 
           styleSheet={{

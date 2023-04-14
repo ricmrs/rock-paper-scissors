@@ -8,3 +8,8 @@ export { default as github } from './github';
 export { default as clock_fill } from './clock_fill';
 export { default as logo } from './logo';
 export { default as close } from './close';
+export { default as paper } from './paper';
+export { default as rock } from './rock';
+export { default as scissors } from './scissors';
+export { default as lizard } from './lizard';
+export { default as spock } from './spock';
