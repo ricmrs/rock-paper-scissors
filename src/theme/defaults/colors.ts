@@ -27,5 +27,9 @@ export const colors = {
   background: {
     top: 'hsl(214, 47%, 23%)',
     bottom: 'hsl(237, 49%, 15%)'
+  },
+  none: {
+    top: 'transparent',
+    bottom: 'transparent'
   }
 };

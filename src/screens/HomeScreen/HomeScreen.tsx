@@ -2,7 +2,7 @@ import Box from "@/components/Box/Box";
 import { useTheme } from "@/theme/ThemeProvider";
 import { createLinearGradient } from "@/theme/utils/linearGradient";
 import ScoreBoard from "./pattern/ScoreBoard";
-import GameBoard from "./pattern/GameBoard";
+import GameBoard from "./pattern/GameBoard/GameBoard";
 import Button from "@/components/Button/Button";
 import Modal from "@/components/Modal";
 import { useState } from "react";

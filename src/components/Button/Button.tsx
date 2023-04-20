@@ -9,6 +9,7 @@ interface ButtonProps extends ButtonBaseProps {
   // colorVariant?: ColorVariant;
   // variant?: Variant;
   size?: ButtonSize;
+  name?: string;
 }
 export default function Button({
   styleSheet,
