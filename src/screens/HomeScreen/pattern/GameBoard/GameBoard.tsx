@@ -2,35 +2,28 @@ import Box from "@/components/Box/Box";
 import { useState } from "react";
 import StepOnePlayerPick from "./StepOnePlayerPick";
 import StepTwoHousePick from "./StepTwoHousePick";
-import StepThreeResult from "./StepThreeResult";
+
+export type Pick = "paper" | "rock" | "scissors";
 
 export default function GameBoard() {
-  const [stepGame, setStepGame] = useState(1)
-  const [playersPicked, setPlayersPicked] = useState<"paper" | "rock" | "scissors">()
+  const [gameStarted, setGameStarted] = useState(false)
+  const [playersPicked, setPlayersPicked] = useState<Pick>()
 
   function startGame(e: React.MouseEvent){
-    setStepGame(stepGame+1);
-    const buttonPicked = e.currentTarget.getAttribute('name') as "paper" | "rock" | "scissors";
+    setGameStarted(true);
+    const buttonPicked = e.currentTarget.getAttribute('name') as Pick;
     setPlayersPicked(buttonPicked!)
   }
 
-  function renderStepGame(param: number) {
-    switch(param) {
-      case 1:
-        return <StepOnePlayerPick onClick={startGame}/>;
-      case 2:
-        return <StepTwoHousePick playersPicked={playersPicked!}/>;
-      case 3:
-        // return <StepThreeResult playersPicked={playersPicked!} />;
-      default:
-        return 'error'
-    }
+  function renderStepGame(gameStarted: boolean) {
+    if(!gameStarted) return <StepOnePlayerPick onClick={startGame}/>;
+    return <StepTwoHousePick playersPicked={playersPicked!}/>;
   }
 
   return (
     <Box
       styleSheet={{
-        backgroundImage: stepGame === 1 ? 'url(./images/bg-triangle.svg)' : '',
+        backgroundImage: !gameStarted && 'url(./images/bg-triangle.svg)',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundSize: '80%',
@@ -39,9 +32,10 @@ export default function GameBoard() {
         flexWrap: 'wrap',
         columnGap: '55px',
         rowGap: '35px',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        height: '350px'
       }}>
-        {renderStepGame(stepGame)}
+        {renderStepGame(gameStarted)}
     </Box>
   )
 }

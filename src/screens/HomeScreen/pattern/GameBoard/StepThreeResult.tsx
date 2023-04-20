@@ -1,37 +1,33 @@
 import Box from "@/components/Box/Box";
-import GameButton from "./GameButton";
 import Text from "@/components/Text/Text";
 import Button from "@/components/Button/Button";
+import { Pick } from "./GameBoard";
+import { useTheme } from "@/theme/ThemeProvider";
 
 interface StepThreeResultProps {
-  playersPicked: "paper" | "rock" | "scissors";
-  housesPicked: "paper" | "rock" | "scissors";
+  result: string
 }
 
-export default function StepThreeResult({ playersPicked, housesPicked }: StepThreeResultProps) {
-  const boxStyles = {
-    alignItems: 'center',
-    gap: '15px'
-  }
-
-  const textStyles = {
-    textTransform: 'uppercase', 
-    color: '#FFF'
-  }
+export default function StepThreeResult({ result }: StepThreeResultProps) {
+  const theme = useTheme()
 
   return (
     <>
-      <Box styleSheet={{...boxStyles}}>
-        <GameButton variant={playersPicked} />
-        <Text styleSheet={{...textStyles}}>You picked</Text>
-      </Box>
-      <Box styleSheet={{...boxStyles}}>
-        <GameButton variant={housesPicked} />
-        <Text styleSheet={{...textStyles}}>The House picked</Text>
-      </Box>
-      <Box>
-        <Text>You lose</Text>
-        <Button>Play Again</Button>
+      <Box styleSheet={{ alignItems: 'center', gap: '30px' }}>
+        <Text variant="heading1" styleSheet={{ color: '#FFF', textTransform: 'uppercase' }}>{result}</Text>
+        <Button 
+          styleSheet={{ 
+            color: theme.colors.text.dark, 
+            backgroundColor: '#FFF', 
+            textTransform: 'uppercase',
+            paddingVertical: '12px',
+            paddingHorizontal: '55px',
+            borderRadius: '8px' 
+          }}
+          textVariant="body1"
+        >
+          Play Again
+        </Button>
       </Box>
     </>
   )

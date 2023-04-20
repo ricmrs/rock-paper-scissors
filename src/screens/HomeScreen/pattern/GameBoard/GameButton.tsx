@@ -3,9 +3,10 @@ import Button from "@/components/Button/Button";
 import Icon from "@/components/Icon";
 import { useTheme } from "@/theme/ThemeProvider";
 import { createLinearGradient } from "@/theme/utils/linearGradient";
+import { Pick } from "./GameBoard";
 
 interface GameButtonProps {
-  variant: "paper" | "rock" | "scissors" | "none"
+  variant: Pick | "none"
   viewBox?: string;
   onClick?: (value: React.MouseEvent) => void;
 }

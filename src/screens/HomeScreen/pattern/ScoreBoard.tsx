@@ -31,7 +31,7 @@ export default function ScoreBoard(){
             paddingHorizontal: '24px'
           }}>
           <Text styleSheet={{ textTransform: 'uppercase', color: theme.colors.text.score }} variant="heading3">Score</Text>
-          <Text styleSheet={{ color: theme.colors.text.dark }} variant="heading1">12</Text>
+          <Text styleSheet={{ color: theme.colors.text.dark }} variant="heading2">12</Text>
         </Box>
       </Box>
   )

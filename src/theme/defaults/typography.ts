@@ -6,7 +6,7 @@ export const typography = {
         xs: '600',
       },
       fontSize: {
-        xs: '36px',
+        xs: '50px',
       },
       lineHeight: '1'
     },
@@ -15,9 +15,9 @@ export const typography = {
         xs: '600',
       },
       fontSize: {
-        xs: '20px',
+        xs: '36px',
       },
-      lineHeight: '0.8'
+      lineHeight: '1'
     },
     heading3: {
       fontWeight: {
@@ -27,6 +27,20 @@ export const typography = {
         xs: '10px',
       },
       letterSpacing: '1.25px',
+    },
+    body1: {
+      fontWeight: {
+        xs: '400',
+        md: '400',
+      },
+      lineHeight: {
+        xs: '1.5',
+        md: '1.5',
+      },
+      fontSize: {
+        xs: '16px',
+      },
+      letterSpacing: 1
     },
     body2: {
       fontWeight: {
@@ -38,7 +52,7 @@ export const typography = {
         md: '1.5',
       },
       fontSize: {
-        xs: '16px',
+        xs: '15px',
       },
     },
   }
