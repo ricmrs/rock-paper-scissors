@@ -41,11 +41,11 @@ export default function GameBoard({ handleChangeScore }: GameBoardProps) {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundSize: '80%',
-        width: '100%',
+        width: '350px',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        columnGap: '55px',
-        rowGap: '35px',
+        columnGap: '20%',
+        rowGap: '12%',
         justifyContent: 'center',
         height: '350px'
       }}>

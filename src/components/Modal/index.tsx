@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import styled from "styled-components";
 import Icon from "../Icon";
 import Button from "../Button/Button";
+import Box from "../Box/Box";
 
 interface ModalProps {
   onClose: () => void;
@@ -42,7 +42,14 @@ function Modal({ onClose, children }: ModalProps) {
           </StyledModalHeader>
           <StyledModalBody>
             {children}
-            <Button onClick={handleCloseClick} styleSheet={{ backgroundColor: 'transparent' }}>
+            <Button 
+              onClick={handleCloseClick} 
+              styleSheet={{ 
+                backgroundColor: 'transparent', 
+                position: { md: 'absolute' },
+                top: '15px', 
+                right: '5px',
+              }}>
               <Icon name="close" viewBox="0 0 20 20" styleSheet={{ color: '#D0D6F9', height: '36px', width: '20px' }}/>
             </Button>
           </StyledModalBody>
@@ -60,46 +67,95 @@ function Modal({ onClose, children }: ModalProps) {
     return null;
   }
 };
+ 
+const StyledModalBody = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Box 
+      tag="nav"
+      styleSheet={{
+        paddingTop: { xs: '100px', md: '20px' },
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        height: '100%'
+      }}
+    >
+      {children}
+    </Box>
+  )
+}
 
-const StyledModalBody = styled.nav`
-  padding-top: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%
-`;
+const StyledModalHeader = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Box 
+      styleSheet={{
+        display: 'flex',
+        justifyContent: 'center',
+        fontSize: '25px',
+        textTransform: 'uppercase',
+        fontFamily: "'Barlow Semi Condensed', sans-serif",
+        fontWeight: '700',
+        alignItems: { xs: 'center', md: 'flex-start' },
+      }}
+    >
+      {children}
+    </Box>
+  )
+}
 
-const StyledModalHeader = styled.div`
-  display: flex;
-  justify-content: center;
-  font-size: 25px;
-  text-transform: uppercase;
-  font-family: 'Barlow Semi Condensed', sans-serif;
-  font-weight: 700;
-`;
+const StyledModal = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Box 
+      styleSheet={{
+        background: '#FFF',
+        width: '100%',
+        paddingHorizontal: '30px',
+        height: { xs: '100%', md: 'auto' },
+        paddingTop: { xs: '100px', md: '20px'},
+        paddingBottom: { xs: '70px', md: '20px' },
+        borderRadius: { xs: 'none', md: '5%' },
+        position: { xs: 'static', md: 'relative' }
+      }}
+    >
+      {children}
+    </Box>
+  )
+}
 
-const StyledModal = styled.div`
-  background: #FFF;
-  height:100%;
-  width:100%;
-  padding: 100px 30px 70px 30px;
-`;
+const StyledModalWrapper = React.forwardRef(({ children }: { children: React.ReactNode }, ref) => {
+  return (
+    <Box 
+      styleSheet={{
+        height: '100%',
+        justifyContent: 'center',
+        width: { xs: '100%', md: 'auto' },
+      }}
+    >
+      {children}
+    </Box>
+  )
+})
 
-const StyledModalWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-`;
+StyledModalWrapper.displayName = 'StyledModalWrapper'
 
-const StyledModalOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-`;
+const StyledModalOverlay = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <Box 
+      styleSheet={{
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        height: '100%',
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      }}
+    >
+      {children}
+    </Box>
+  )
+}
 
 export default Modal;

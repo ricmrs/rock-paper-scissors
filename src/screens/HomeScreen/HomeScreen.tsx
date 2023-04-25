@@ -21,9 +21,9 @@ export default function HomeScreen() {
         background: createLinearGradient(theme, 'background'),
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingHorizontal: '20px',
+        paddingHorizontal: { xs: '20px', md: '40px'},
         paddingTop: '30px',
-        paddingBottom: '50px'
+        paddingBottom: { xs: '50px', md: '30px' }
       }}
     >
       <ScoreBoard score={score}/>
@@ -37,7 +37,8 @@ export default function HomeScreen() {
           paddingHorizontal: '40px',
           borderRadius: '6px',
           letterSpacing: '2px',
-          fontSize: '15px'
+          fontSize: '15px',
+          alignSelf: { md: 'flex-end' }
         }}
       >
         Rules
@@ -46,7 +47,7 @@ export default function HomeScreen() {
         <Modal
           onClose={() => setShowModal(false)}
         >
-          <Image src="./images/image-rules.svg" alt="Rules"/>
+          <Image src="./images/image-rules.svg" alt="Rules" />
         </Modal>}
     </Box>
   )

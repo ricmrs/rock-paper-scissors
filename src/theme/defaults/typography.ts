@@ -16,6 +16,7 @@ export const typography = {
       },
       fontSize: {
         xs: '36px',
+        md: '40px'
       },
       lineHeight: '1'
     },
@@ -25,6 +26,7 @@ export const typography = {
       },
       fontSize: {
         xs: '10px',
+        md: '20px'
       },
       letterSpacing: '1.25px',
     },

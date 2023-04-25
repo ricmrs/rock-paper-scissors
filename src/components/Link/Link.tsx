@@ -2,7 +2,7 @@ import React from 'react';
 import NextLink from 'next/link';
 import Text from "../Text/Text";
 import { StyleSheet } from "@/theme/StyleSheet";
-import { ThemeTypographyVariants } from "@/theme/theme";
+import { ThemeColorVariants, ThemeTypographyVariants } from "@/theme/theme";
 import { useTheme } from "@/theme/ThemeProvider";
 
 
@@ -11,7 +11,7 @@ interface LinkProps {
   children: React.ReactNode;
   styleSheet?: StyleSheet;
   variant?: ThemeTypographyVariants;
-  colorVariant?: 'primary' | 'accent' | 'neutral' | 'positive' | 'warning' | 'negative';
+  colorVariant?: ThemeColorVariants;
   colorVariantEnabled?: boolean;
 }
 
@@ -27,12 +27,12 @@ const Link = React.forwardRef(({
   const isIExternalLink = href.startsWith('http');
 
   const currentColorSet = {
-    color: theme.colors[colorVariant!].x500,
+    color: theme.colors[colorVariant!],
     hover: {
-      color: theme.colors[colorVariant!].x400,
+      color: theme.colors[colorVariant!],
     },
     focus: {
-      color: theme.colors[colorVariant!].x600,
+      color: theme.colors[colorVariant!],
     }
   };
 
@@ -80,7 +80,7 @@ const Link = React.forwardRef(({
 });
 
 Link.defaultProps = {
-  colorVariant: 'primary',
+  colorVariant: 'text',
   colorVariantEnabled: true,
 };
 

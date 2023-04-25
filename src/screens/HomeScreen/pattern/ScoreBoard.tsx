@@ -15,16 +15,16 @@ export default function ScoreBoard({ score }: ScoreBoardProps ){
         styleSheet={{
           flexDirection: 'row',
           justifyContent: 'space-around',
-          gap: '100px',
           outline: `3px solid ${theme.colors.text.header}`,
-          borderRadius: '3px',
-          paddingLeft: '20px',
-          paddingRight: '10px',
-          paddingVertical: '10px',
-          alignItems: 'center'
+          alignItems: 'center',
+          borderRadius: { xs: '3px', md: '6px' },
+          gap: { xs: '100px', md: '300px' },
+          paddingLeft: { xs: '20px', md: '30px' },
+          paddingRight: { xs: '10px', md: '20px' },
+          paddingVertical: { xs: '10px', md: '15px' },
         }}>
         <Box>
-          <Image src="/images/logo.svg" alt="Logo" styleSheet={{ height: '50px' }}/>
+          <Image src="/images/logo.svg" alt="Logo" styleSheet={{ height: { xs: '50px', md: '80px' } }}/>
         </Box>
         <Box 
           styleSheet={{
