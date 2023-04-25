@@ -1,23 +1,37 @@
 import Box from "@/components/Box/Box";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import StepOnePlayerPick from "./StepOnePlayerPick";
 import StepTwoHousePick from "./StepTwoHousePick";
 
 export type Pick = "paper" | "rock" | "scissors";
 
-export default function GameBoard() {
-  const [gameStarted, setGameStarted] = useState(false)
-  const [playersPicked, setPlayersPicked] = useState<Pick>()
+interface GameBoardProps {
+  handleChangeScore: Dispatch<SetStateAction<number>>;
+}
+
+export default function GameBoard({ handleChangeScore }: GameBoardProps) {
+  const [gameStarted, setGameStarted] = useState(false);
+  const [playersPicked, setPlayersPicked] = useState<Pick>();
 
   function startGame(e: React.MouseEvent){
     setGameStarted(true);
     const buttonPicked = e.currentTarget.getAttribute('name') as Pick;
-    setPlayersPicked(buttonPicked!)
+    setPlayersPicked(buttonPicked!);
+  }
+
+  function restartGame(){
+    setGameStarted(false);
   }
 
   function renderStepGame(gameStarted: boolean) {
     if(!gameStarted) return <StepOnePlayerPick onClick={startGame}/>;
-    return <StepTwoHousePick playersPicked={playersPicked!}/>;
+    return (
+      <StepTwoHousePick 
+        playersPicked={playersPicked!} 
+        restartGame={restartGame} 
+        handleChangeScore={handleChangeScore}
+      />
+    );
   }
 
   return (

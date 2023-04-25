@@ -1,17 +1,27 @@
 import Box from "@/components/Box/Box";
 import GameButton from "./GameButton";
 import Text from "@/components/Text/Text";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import StepThreeResult from "./StepThreeResult";
 import { Pick } from "./GameBoard";
+import { finishGame, housePickAnHand } from "./utils/gamemoves";
 
 interface StepTwoHousePickProps {
-  playersPicked: Pick
+  playersPicked: Pick;
+  restartGame: () => void;
+  handleChangeScore: Dispatch<SetStateAction<number>>
 }
 
-export default function StepTwoHousePick({ playersPicked }: StepTwoHousePickProps) {
+interface FinishGameProps {
+  gameResult: string;
+  gameScore: number;
+  isGameFinished: boolean;
+}
+
+export default function StepTwoHousePick({ playersPicked, restartGame, handleChangeScore }: StepTwoHousePickProps) {
   const [housesPicked, setHousesPicked] = useState<Pick | "none">("none");
   const [gameFinished, setGameFinished] = useState(false);
+  const [result, setResult] = useState('');
 
   const boxStyles = {
     alignItems: 'center',
@@ -23,16 +33,18 @@ export default function StepTwoHousePick({ playersPicked }: StepTwoHousePickProp
     color: '#FFF'
   }
 
-  function housePickAnHand() {
-    const hand = ["paper", "rock", "scissors"]
-    const randomNumber = Math.floor(Math.random() * 3)
-    return hand[randomNumber] as Pick
-  }
+  useEffect(() => {
+    setTimeout(() => setHousesPicked(housePickAnHand), 1000);
+  }, []);
 
   useEffect(() => {
-    setTimeout(() => setHousesPicked(housePickAnHand), 1000)
-    setTimeout(() => setGameFinished(true), 5000)
-  }, [])
+    setTimeout(() => {
+      const { gameResult, gameScore, isGameFinished }: FinishGameProps = finishGame(playersPicked, housesPicked);
+      handleChangeScore(initialValue => initialValue+gameScore);
+      setResult(gameResult);
+      setGameFinished(isGameFinished);
+    }, 1000);
+  }, [playersPicked, housesPicked, handleChangeScore])
 
   return (
     <>
@@ -48,7 +60,10 @@ export default function StepTwoHousePick({ playersPicked }: StepTwoHousePickProp
           </Box>
         </Box>
         {gameFinished &&
-          <StepThreeResult result="You win" />
+          <StepThreeResult 
+            result={result}
+            restartGame={restartGame} 
+          />
         }
       </Box>
 

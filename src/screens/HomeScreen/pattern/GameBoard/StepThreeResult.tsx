@@ -1,15 +1,15 @@
 import Box from "@/components/Box/Box";
 import Text from "@/components/Text/Text";
 import Button from "@/components/Button/Button";
-import { Pick } from "./GameBoard";
 import { useTheme } from "@/theme/ThemeProvider";
 
 interface StepThreeResultProps {
-  result: string
+  result: string;
+  restartGame: () => void;
 }
 
-export default function StepThreeResult({ result }: StepThreeResultProps) {
-  const theme = useTheme()
+export default function StepThreeResult({ result, restartGame }: StepThreeResultProps) {
+  const theme = useTheme();
 
   return (
     <>
@@ -25,6 +25,7 @@ export default function StepThreeResult({ result }: StepThreeResultProps) {
             borderRadius: '8px' 
           }}
           textVariant="body1"
+          onClick={restartGame}
         >
           Play Again
         </Button>

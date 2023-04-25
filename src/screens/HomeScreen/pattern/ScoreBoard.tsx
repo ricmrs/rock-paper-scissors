@@ -3,8 +3,12 @@ import Image from "@/components/Image/Image";
 import Text from "@/components/Text/Text";
 import { useTheme } from "@/theme/ThemeProvider";
 
-export default function ScoreBoard(){
-  const theme = useTheme()
+interface ScoreBoardProps {
+  score: number;
+}
+
+export default function ScoreBoard({ score }: ScoreBoardProps ){
+  const theme = useTheme();
 
   return (
     <Box 
@@ -31,7 +35,7 @@ export default function ScoreBoard(){
             paddingHorizontal: '24px'
           }}>
           <Text styleSheet={{ textTransform: 'uppercase', color: theme.colors.text.score }} variant="heading3">Score</Text>
-          <Text styleSheet={{ color: theme.colors.text.dark }} variant="heading2">12</Text>
+          <Text styleSheet={{ color: theme.colors.text.dark }} variant="heading2">{score}</Text>
         </Box>
       </Box>
   )

@@ -11,6 +11,7 @@ import Image from "@/components/Image/Image";
 export default function HomeScreen() {
   const theme = useTheme();
   const [showModal, setShowModal] = useState(false);
+  const [score, setScore]  = useState(0);
 
   return (
     <Box
@@ -25,8 +26,8 @@ export default function HomeScreen() {
         paddingBottom: '50px'
       }}
     >
-      <ScoreBoard />
-      <GameBoard />
+      <ScoreBoard score={score}/>
+      <GameBoard handleChangeScore={setScore}/>
       <Button
         onClick={() => setShowModal(true)} 
         styleSheet={{
