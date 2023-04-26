@@ -126,10 +126,11 @@ const StyledModalWrapper = React.forwardRef(({ children }: { children: React.Rea
   return (
     <Box 
       styleSheet={{
-        height: '100%',
         justifyContent: 'center',
+        height: { xs: '100%', md: 'auto' },
         width: { xs: '100%', md: 'auto' },
       }}
+      ref={ref}
     >
       {children}
     </Box>
@@ -148,7 +149,7 @@ const StyledModalOverlay = ({ children }: { children: React.ReactNode }) => {
         height: '100%',
         width: '100%',
         display: 'flex',
-        justifyContent: 'flex-end',
+        justifyContent: { xs: 'flex-end', md: 'center' },
         alignItems: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
       }}

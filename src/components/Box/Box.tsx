@@ -7,11 +7,16 @@ interface BoxProps {
   children?: React.ReactNode;
   styleSheet?: StyleSheet;
 }
-export default function Box({ styleSheet, children, tag, ...props }: BoxProps) {
+
+const Box = React.forwardRef(({ styleSheet, children, tag, ...props }: BoxProps, ref) => {
   const Tag = tag || 'div';
   return (
-    <BaseComponent as={Tag} styleSheet={styleSheet} {...props}>
+    <BaseComponent as={Tag} styleSheet={styleSheet} {...props} ref={ref}>
       {children}
     </BaseComponent>
   );
-}
+})
+
+Box.displayName = 'Box';
+
+export default Box;
